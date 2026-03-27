@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:islamy_app2/shared/app_colors.dart';
 
-
 class AppTheme {
   static final ThemeData appTheam = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.goldColor),
     scaffoldBackgroundColor: AppColors.blackColor,
     appBarTheme: AppBarTheme(
       elevation: 0,
-      backgroundColor: AppColors.goldColor,
+      backgroundColor: AppColors.blackColor,
       titleTextStyle: TextStyle(
         color: AppColors.goldColor,
         fontSize: 20,

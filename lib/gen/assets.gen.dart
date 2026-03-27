@@ -26,6 +26,10 @@ class Assets {
     'assets/Splash Screen.png',
   );
   static const AssetGenImage bearish = AssetGenImage('assets/bearish.png');
+  static const AssetGenImage hadeethCardBg = AssetGenImage(
+    'assets/hadeeth_card_bg.png',
+  );
+  static const AssetGenImage hadeethbg = AssetGenImage('assets/hadeethbg.png');
   static const String icHadeth = 'assets/ic_hadeth.svg';
   static const String icQuran = 'assets/ic_quran.svg';
   static const String icRadio = 'assets/ic_radio.svg';
@@ -39,6 +43,9 @@ class Assets {
   static const AssetGenImage quranbg = AssetGenImage('assets/quranbg.png');
   static const AssetGenImage radio = AssetGenImage('assets/radio.png');
   static const AssetGenImage reading = AssetGenImage('assets/reading.png');
+  static const AssetGenImage suraDetails = AssetGenImage(
+    'assets/sura_details.png',
+  );
   static const AssetGenImage welcome = AssetGenImage('assets/welcome.png');
 
   /// List of all assets
@@ -49,6 +56,8 @@ class Assets {
     rectangle1,
     splashScreen,
     bearish,
+    hadeethCardBg,
+    hadeethbg,
     icHadeth,
     icQuran,
     icRadio,
@@ -60,6 +69,7 @@ class Assets {
     quranbg,
     radio,
     reading,
+    suraDetails,
     welcome,
   ];
 }

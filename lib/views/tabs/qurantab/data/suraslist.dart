@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:islamy_app2/data/qurandata.dart';
+import 'package:islamy_app2/data/models/suramodel.dart';
 import 'package:islamy_app2/gen/assets.gen.dart';
-
+import 'package:islamy_app2/views/tabs/qurantab/sura_details_page.dart';
 
 class Suraslist extends StatelessWidget {
-  const Suraslist({super.key});
-
+  const Suraslist({super.key,required this.suras});
+  final List<Suramodel> suras;
   @override
   Widget build(BuildContext context) {
     return SliverMainAxisGroup(
-    
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
@@ -26,11 +25,13 @@ class Suraslist extends StatelessWidget {
           ),
         ),
         SliverList.builder(
-          itemCount: Qurandata.suras.length,
+          
+          itemCount:suras.length,
           itemBuilder: (context, index) {
             return Column(
               children: [
                 ListTile(
+                  onTap: () => Navigator.of(context).pushNamed(SuraDetailsPage.routeName,arguments: index+1),
                   minVerticalPadding: 0,
                   contentPadding: EdgeInsets.all(0),
                   leading: Stack(
@@ -48,7 +49,7 @@ class Suraslist extends StatelessWidget {
                     ],
                   ),
                   title: Text(
-                  Qurandata.suras[index].enName,
+                   suras[index].enName,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -56,7 +57,7 @@ class Suraslist extends StatelessWidget {
                     ),
                   ),
                   subtitle: Text(
-                Qurandata.suras[index].versesCount,
+                   suras[index].versesCount,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -64,7 +65,7 @@ class Suraslist extends StatelessWidget {
                     ),
                   ),
                   trailing: Text(
-                Qurandata.suras[index].arName,
+                   suras[index].arName,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

@@ -12,18 +12,18 @@ import 'package:islamy_app2/widgets/prefs_helper.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class bordingviews extends StatefulWidget {
-  const bordingviews({super.key});
-
+class Bordingviews extends StatefulWidget {
+  const Bordingviews({super.key});
+  static const String routeName = "Bordingviews";
   @override
-  State<bordingviews> createState() => _bordingviewsState();
+  State<Bordingviews> createState() => _BordingviewsState();
 }
 
-class _bordingviewsState extends State<bordingviews> {
+class _BordingviewsState extends State<Bordingviews> {
   int count = 0;
   PageController controller = PageController();
   bool isfinish = false;
-  List<Widget> bordingviews = [
+  List<Widget> Bordingviews = [
     Wellcomview(),
     Hadethbordingview(),
     Quranbordingviwe(),
@@ -43,13 +43,13 @@ class _bordingviewsState extends State<bordingviews> {
               onPageChanged: (index) {
                 setState(() {
                   count = index;
-                  isfinish = index == bordingviews.length - 1;
+                  isfinish = index == Bordingviews.length - 1;
                 });
               },
               controller: controller,
-              itemCount: bordingviews.length,
+              itemCount: Bordingviews.length,
               itemBuilder: (context, index) {
-                return bordingviews[index];
+                return Bordingviews[index];
               },
             ),
           ),
@@ -92,13 +92,13 @@ class _bordingviewsState extends State<bordingviews> {
             ),
             SmoothPageIndicator(
               controller: controller,
-              count: bordingviews.length,
+              count: Bordingviews.length,
               effect: WormEffect(),
             ),
 
             // TextButton(
             //   onPressed: () {
-            //     if (count < bordingviews.length - 1) {
+            //     if (count < Bordingviews.length - 1) {
             //       count++;
             //       controller.animateToPage(
             //         count,

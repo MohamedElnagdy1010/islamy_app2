@@ -11,9 +11,9 @@ import 'package:islamy_app2/views/tabs/radiotab/radiotab.dart';
 import 'package:islamy_app2/views/tabs/sebhatab/sebhatab.dart';
 import 'package:islamy_app2/views/tabs/timestab/timestab.dart';
 
-
 class Homeview extends StatefulWidget {
   const Homeview({super.key});
+  static const String routeName = "homeview";
 
   @override
   State<Homeview> createState() => _HomeviewState();
@@ -31,7 +31,7 @@ class _HomeviewState extends State<Homeview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:tabs[currentTab],
+      body: tabs[currentTab],
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab,
