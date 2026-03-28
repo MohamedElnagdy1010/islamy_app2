@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
+import 'package:islamy_app2/data/models/hadeethmodel.dart';
 import 'package:islamy_app2/gen/assets.gen.dart';
 import 'package:islamy_app2/shared/app_colors.dart';
 import 'package:islamy_app2/shared/bgimage.dart';
@@ -13,14 +15,22 @@ class Hadeethtabview extends StatefulWidget {
 }
 
 class _HadeethtabviewState extends State<Hadeethtabview> {
-  PageController _controller = PageController(
+  final PageController _controller = PageController(
     viewportFraction: .75,
     initialPage: 0,
   );
   int curuntpage = 0;
-
+  List<dynamic> ahadeethList = [];
+  List <Hadeethmodel>   hadeethdata = [];
+  
   @override
   Widget build(BuildContext context) {
+//   bool isfirstbuilde = true;
+// if (isfirstbuilde) {
+//     loadHadeeth(hadeethdata.length);
+//       isfirstbuilde = false;
+//     }
+    
     return Stack(
       children: [
         Bgimage(imagepath: Assets.hadeethbg.path),
@@ -34,16 +44,16 @@ class _HadeethtabviewState extends State<Hadeethtabview> {
                 child: PageView.builder(
                   onPageChanged: (value) {
                     curuntpage = value;
-                    setState(() {
-                      
-                    });
+                    setState(() {});
                   },
                   controller: _controller,
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     bool isactive = index == curuntpage;
                     return Padding(
-                      padding:  EdgeInsets.symmetric(vertical: isactive?0:20),
+                      padding: EdgeInsets.symmetric(
+                        vertical: isactive ? 0 : 20,
+                      ),
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadiusGeometry.circular(40),
@@ -105,5 +115,18 @@ class _HadeethtabviewState extends State<Hadeethtabview> {
         ),
       ],
     );
+  }
+
+  Future<void> loadHadeeth(int id) async {
+    String ahadeeth = await rootBundle.loadString("assets/Hadeeth/$id+1.txt");
+    List ahadeethFinalList = [];
+    String title = ahadeeth.trim().split("\n").first;
+    int titleLength = title.length;
+    String content = ahadeeth.substring(titleLength);
+    ahadeethFinalList.add(
+      Hadeethmodel(number: id, title: title, content: content),
+    );
+    ahadeethList = ahadeethFinalList;
+    print(ahadeethFinalList.length);
   }
 }

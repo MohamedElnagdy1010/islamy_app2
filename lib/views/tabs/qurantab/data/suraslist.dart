@@ -5,7 +5,7 @@ import 'package:islamy_app2/gen/assets.gen.dart';
 import 'package:islamy_app2/views/tabs/qurantab/sura_details_page.dart';
 
 class Suraslist extends StatelessWidget {
-  const Suraslist({super.key,required this.suras});
+  const Suraslist({super.key, required this.suras});
   final List<Suramodel> suras;
   @override
   Widget build(BuildContext context) {
@@ -25,13 +25,15 @@ class Suraslist extends StatelessWidget {
           ),
         ),
         SliverList.builder(
-          
-          itemCount:suras.length,
+          itemCount: suras.length,
           itemBuilder: (context, index) {
+            var sura = suras[index];
             return Column(
               children: [
                 ListTile(
-                  onTap: () => Navigator.of(context).pushNamed(SuraDetailsPage.routeName,arguments: index+1),
+                  onTap: () => Navigator.of(
+                    context,
+                  ).pushNamed(SuraDetailsPage.routeName, arguments: sura),
                   minVerticalPadding: 0,
                   contentPadding: EdgeInsets.all(0),
                   leading: Stack(
@@ -49,7 +51,7 @@ class Suraslist extends StatelessWidget {
                     ],
                   ),
                   title: Text(
-                   suras[index].enName,
+                    suras[index].enName,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -57,7 +59,7 @@ class Suraslist extends StatelessWidget {
                     ),
                   ),
                   subtitle: Text(
-                   suras[index].versesCount,
+                    suras[index].versesCount,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -65,7 +67,7 @@ class Suraslist extends StatelessWidget {
                     ),
                   ),
                   trailing: Text(
-                   suras[index].arName,
+                    suras[index].arName,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
